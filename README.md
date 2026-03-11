@@ -4,13 +4,11 @@
 
 ## 一句话开始
 
-打开 OpenClaw 或 Claude Code，粘贴：
+克隆本项目后，在 Claude Code 中粘贴：
 
 ```
-安装 BottomClaw skill (https://github.com/nobita1998/deepClaw/skill/bottomclaw)，然后帮我设置一个加密货币定投计划。
+读取 skill/bottomclaw/SKILL.md，按照里面的 setup 引导流程跟我对话。
 ```
-
-龙虾会自动引导你完成设置。
 
 ## 安装
 
