@@ -2,7 +2,17 @@
 
 多信号驱动的自动建仓 OpenClaw Skill。追踪 BTC/BNB/HYPE 实时价格与市场情绪，根据你的阶梯规则自动提醒或执行 DCA。
 
-## 快速开始
+## 一句话开始
+
+打开 OpenClaw 或 Claude Code，粘贴：
+
+```
+安装 BottomClaw skill (https://github.com/nobita1998/deepClaw/skill/bottomclaw)，然后帮我设置一个加密货币定投计划。
+```
+
+龙虾会自动引导你完成设置。
+
+## 安装
 
 ### OpenClaw
 
