@@ -4,11 +4,14 @@
 
 ## 一句话开始
 
-克隆本项目后，在 Claude Code 中粘贴：
+复制下面这段话，发给你的 AI 助手（Claude Code / OpenClaw / ChatGPT 等）：
 
 ```
-读取 skill/bottomclaw/SKILL.md，按照里面的 setup 引导流程跟我对话。
+请阅读这个文件的内容，然后按照里面的 Setup 引导流程跟我对话：
+https://raw.githubusercontent.com/nobita1998/deepClaw/main/skill/bottomclaw/SKILL.md
 ```
+
+AI 会读取文件后变身抄底龙虾，引导你一步步设置。
 
 ## 安装
 
