@@ -1,0 +1,81 @@
+{
+  "version": "1.0",
+  "mode": "alert_only",
+  "riskControl": {
+    "maxTotalInvestment": 15000,
+    "maxDailySpend": 50,
+    "maxSingleAssetPct": {
+      "HYPE": 10
+    },
+    "noLeverage": true,
+    "noChasing": true
+  },
+  "assets": [
+    {
+      "symbol": "BTC",
+      "pair": "BTCUSDT",
+      "targetAllocation": 70,
+      "phases": [
+        { "name": "normal_dca", "condition": "any",    "dailyDCA": 8.8,  "lumpSum": null },
+        { "name": "increase",   "condition": "<63000", "dailyDCA": 15,   "lumpSum": null },
+        { "name": "heavy",      "condition": "<55000", "dailyDCA": 25,   "lumpSum": null },
+        { "name": "extreme",    "condition": "<48000", "dailyDCA": null,  "lumpSum": { "min": 500, "max": 1000 } }
+      ]
+    },
+    {
+      "symbol": "BNB",
+      "pair": "BNBUSDT",
+      "targetAllocation": 20,
+      "phases": [
+        { "name": "watch",      "condition": ">500",  "dailyDCA": 0,    "lumpSum": null },
+        { "name": "normal_dca", "condition": "<500",  "dailyDCA": 5,    "lumpSum": null },
+        { "name": "increase",   "condition": "<400",  "dailyDCA": 10,   "lumpSum": null },
+        { "name": "extreme",    "condition": "<300",  "dailyDCA": null,  "lumpSum": { "min": 300, "max": 500 } }
+      ]
+    },
+    {
+      "symbol": "HYPE",
+      "pair": "HYPEUSDT",
+      "targetAllocation": 10,
+      "phases": [
+        { "name": "watch",      "condition": ">22",   "dailyDCA": 0,    "lumpSum": null },
+        { "name": "normal_dca", "condition": "<22",   "dailyDCA": 3,    "lumpSum": null },
+        { "name": "increase",   "condition": "<15",   "dailyDCA": 5,    "lumpSum": null },
+        { "name": "extreme",    "condition": "<10",   "dailyDCA": null,  "lumpSum": { "min": 200, "max": 300 } }
+      ]
+    }
+  ],
+  "phaseUpgradeSignals": {
+    "normal_to_increase": {
+      "minSignals": 2,
+      "signals": [
+        { "type": "price", "asset": "BTC", "condition": "<63000" },
+        { "type": "fng", "condition": "<20" },
+        { "type": "etf", "condition": "net_outflow_7d" }
+      ]
+    },
+    "increase_to_heavy": {
+      "minSignals": 2,
+      "signals": [
+        { "type": "price", "asset": "BTC", "condition": "<55000" },
+        { "type": "fng", "condition": "<10" },
+        { "type": "btc_dominance", "condition": ">63" }
+      ]
+    },
+    "heavy_to_extreme": {
+      "minSignals": 2,
+      "signals": [
+        { "type": "price", "asset": "BTC", "condition": "<48000" },
+        { "type": "systemic_event", "condition": "manual_confirm" },
+        { "type": "price_change_24h", "asset": "BTC", "condition": "<-15" }
+      ]
+    }
+  },
+  "emergencyExit": {
+    "HYPE": {
+      "triggers": ["hack", "protocol_exploit", "liquidation_failure"],
+      "action": "sell_all",
+      "noDCA": true
+    }
+  }
+}
